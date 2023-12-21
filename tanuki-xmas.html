@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./images/tanuki-xmas.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="./images/tanuki-xmas.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css">
+  <script src="tanuki-xmas.js"></script>
+  <title>幸福狸貓之聖誕迷航</title>
+</head>
+
+<body>
+
+  <div id="entry" class="fullPage">
+    <button id="mousePlay" onclick="playWithMouse()">滑鼠</button>
+    <button id="keyBoardPlay" onclick="playWithKeyBoard()">方向鍵</button>
+    <button id="controllerPlay" onclick="playWithController()">控制鍵</button>
+  </div>
+
+  <div id="countdown" class="fullPage">3</div>
+
+  <div id="controller">
+    <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+    <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+    <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+    <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+  </div>
+
+
+  <div id="myfilter" class="fullPage">
+    <button id="myrestartbutton" onclick="restartGame()">Restart</button>
+  </div>
+
+
+</body>
+
+</html>
