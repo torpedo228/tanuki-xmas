@@ -68,36 +68,68 @@ div#entry img.snowman {
 }
 div#entry div.button_wrap {
   position: absolute;
-  bottom: 10vh;
-  right: 30vw;
+  bottom: 15vh;
+  right: 20vw;
   text-align: center;
+  display: flex;
+  gap: 2vw;
 }
-div#entry div.button_wrap button#enter {
-  width: 10vw;
-  height: 10vw;
+div#entry div.button_wrap div.btn_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div#entry div.button_wrap div.rank {
+  position: relative;
+  top: 18vh;
+}
+div#entry div.button_wrap button {
   border-radius: 100px;
-  background-color: white;
-  color: #FFC840;
-  box-shadow: 6px 6px 0 #FFC840;
-  font-size: 5vw;
   border: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+div#entry div.button_wrap button#enter {
+  width: 10vw;
+  height: 10vw;
+  font-size: 5vw;
+  background-color: #DC5827;
+  color: white;
+  box-shadow: 0.35vw 0.35vw 0 #3AA162;
+}
+div#entry div.button_wrap button#enter:hover {
+  background-color: white;
+  color: #FFC840;
+  box-shadow: 0.35vw 0.35vw 0 #FFC840;
+}
 div#entry div.button_wrap button#enter i {
   position: relative;
   left: 0.5vw;
 }
-div#entry div.button_wrap button#enter:hover {
-  background-color: #DC5827;
+div#entry div.button_wrap button#rank {
+  width: 6vw;
+  height: 6vw;
+  font-size: 3vw;
+  background-color: #FFC840;
+  color: white;
+  box-shadow: 0.35vw 0.35vw 0 #DC5827;
+}
+div#entry div.button_wrap button#rank:hover {
+  background-color: white;
   color: #3AA162;
-  box-shadow: 6px 6px 0 #3AA162;
+  box-shadow: 0.35vw 0.35vw 0 #3AA162;
+}
+div#entry div.button_wrap h2 {
+  margin: 0.8vw;
+  color: white;
+  font-weight: 400;
 }
 div#entry div.button_wrap h2.play {
-  color: white;
-  font-style: italic;
   font-size: 3vw;
+}
+div#entry div.button_wrap h2.rank {
+  font-size: 2vw;
 }
 
 /* chooseGameMode */

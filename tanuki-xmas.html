@@ -33,10 +33,18 @@
 
 
     <div class="button_wrap">
-      <button id="enter" onclick="choosePlayMode()" onmouseenter="enterHover()">
-        <i class="fa-solid fa-play"></i>
-      </button>
-      <h2 class="play">Play!</h2>
+      <div class="play btn_block">
+        <button id="enter" onclick="choosePlayMode()" onmouseenter="enterHover()">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <h2 class="play">開始遊戲!</h2>
+      </div>
+      <div class="rank btn_block">
+        <button id="rank" onclick="goToRanking()">
+          <i class="fa-solid fa-ranking-star"></i>
+        </button>
+        <h2 class="rank">排行榜</h2>
+      </div>
     </div>
   </div>
 
