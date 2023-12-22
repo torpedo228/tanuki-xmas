@@ -10,6 +10,16 @@ var playWithMouse;
 var playWithKeyBoard;
 var playWithController;
 
+
+// function enterHover(){
+//   mySound = new sound("./audios/chuchu.mp3");
+//   mySound.play();
+// }
+
+function choosePlayMode() {
+  document.getElementById("entry").style.display = "none";
+}
+
 function playWithMouse() {
   playWithMouse = true;
   countDown();
@@ -20,6 +30,7 @@ function playWithKeyBoard() {
   playWithKeyBoard = true;
   countDown();
 }
+
 function playWithController() {
   playWithController = true;
   document.getElementById("controller").style.display = "block";
@@ -29,7 +40,7 @@ function playWithController() {
 
 function countDown() {
   startGame();
-  document.getElementById("entry").style.display = "none";
+  document.getElementById("choosePlayMode").style.display = "none";
   document.getElementById("countdown").style.display = "flex";
 
   var timeLeft = 3;
@@ -46,8 +57,8 @@ function countDown() {
 }
 
 function startGame() {
-  myBackground = new component(canvasWidth, canvasHeight, "./images/background.png", 0, 0, "background");
-  myGamePiece = new component(120, 150, "./images/tanudeer.svg", 10, 120, "image");
+  myBackground = new component(canvasWidth, canvasHeight, "./images/game/background.png", 0, 0, "background");
+  myGamePiece = new component(120, 150, "./images/game/tanudeer.svg", 10, 120, "image");
   myScore = new component("30px", "Consolas", "black", canvasWidth - 250, 40, "text");
   // mySound = new sound("./audios/chuchu.mp3");
   myMusic = new sound("./audios/JingleBells.mp3");
