@@ -29,7 +29,7 @@ div.full_page {
 }
 
 div#entry {
-  z-index: 10;
+  z-index: 999;
   background-image: url('../images/entry/background.png');
   background-size: cover;
 
@@ -127,6 +127,7 @@ div#entry {
 
 /* chooseGameMode */
 div#chooseGameMode {
+  z-index: 50;
   background-image: url('../images/choose-game-mode/background.png');
   background-size: cover;
   display: flex;
@@ -153,7 +154,8 @@ div#chooseGameMode {
     display: flex;
     justify-content: center;
     gap: 10vh;
-    transform: translateY(15vh);
+    position: relative;
+    top: 15vh;
 
     div.mode_block {
       display: flex;
@@ -165,14 +167,17 @@ div#chooseGameMode {
       gap: 2vh;
 
       &:nth-child(1) button.game_mode_btn {
+        color: $xmasYellow;
         box-shadow: 6px 6px 0 $xmasYellow;
       }
 
       &:nth-child(2) button.game_mode_btn {
+        color: $xmasRed;
         box-shadow: 6px 6px 0 $xmasRed;
       }
 
       &:nth-child(3) button.game_mode_btn {
+        color: $xmasGreen;
         box-shadow: 6px 6px 0 $xmasGreen;
       }
 
@@ -209,7 +214,7 @@ div#chooseGameMode {
   }
 
   // back to home
-  div.back_to_home {
+  button.back_to_home {
     width: 6vw;
     height: 6vw;
     border-radius: 10vw;
@@ -240,6 +245,7 @@ div#chooseGameMode {
 
 /* countdown */
 div#countdown {
+  z-index: 30;
   background: rgba(0, 0, 0, 0.3);
   display: none;
   font-size: 20vw;
@@ -250,16 +256,148 @@ div#controller {
   position: absolute;
   top: 0;
   display: none;
+
+
+
+  button.control {
+    width: 10vw;
+    height: 12vh;
+    border-radius: 5vw;
+    background-color: white;
+    text-align: center;
+    border: 0;
+    font-size: 2vw;
+  }
+
+
+
+
 }
 
 div#myfilter {
-  z-index: 5;
+  z-index: 10;
   background: rgba(0, 0, 0, 0.3);
   display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
+
+  h2.title {
+    margin: 0;
+    font-size: 8vw;
+    color: white;
+    font-weight: 400;
+
+    img {
+      width: 10vw;
+    }
+  }
+
+  h3#score {
+    margin: 0;
+    font-size: 5vw;
+    color: white;
+    font-weight: 400;
+  }
+
+
+}
+
+
+div.pause {
+  display: flex;
+  z-index: 5;
+  position: absolute;
+
+
+  div.pause {
+    z-index: 8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14vw;
+    height: 3vw;
+    border-radius: 0 0 1vw 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+
+    i {
+      font-size: 1.5vw;
+      transform: translateY(0.2vh);
+    }
+  }
+
+  div#pause_control {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    position: absolute;
+    width: 70vw;
+    height: 60vh;
+    border-radius: 2vw;
+    background: rgba(0, 0, 0, 0.5);
+
+    h2.title {
+      margin: 0;
+      font-size: 5vw;
+      color: white;
+      font-weight: 400;
+
+      img {
+        width: 10vw;
+      }
+    }
+  }
+}
+
+
+div.btn_wrap {
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin: 0 1vw;
+    padding: 0 2vw;
+    height: 15vh;
+    border-radius: 5vw;
+    background-color: white;
+    color: $xmasBlue;
+    text-align: center;
+    border: 0;
+    font-size: 2vw;
+
+    &:hover {
+      color: white;
+    }
+
+    &:nth-child(1):hover {
+      background-color: $xmasYellow;
+    }
+
+    &:nth-child(2):hover {
+      background-color: $xmasRed;
+    }
+
+    &:nth-child(3):hover {
+      background-color: $xmasGreen;
+    }
+
+    &:nth-child(4):hover {
+      background-color: $xmasBlue;
+    }
+
+  }
 }
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 button:active {

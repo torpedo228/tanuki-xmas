@@ -23,7 +23,7 @@ div.full_page {
 }
 
 div#entry {
-  z-index: 10;
+  z-index: 999;
   background-image: url("../images/entry/background.png");
   background-size: cover;
 }
@@ -102,6 +102,7 @@ div#entry div.button_wrap h2.play {
 
 /* chooseGameMode */
 div#chooseGameMode {
+  z-index: 50;
   background-image: url("../images/choose-game-mode/background.png");
   background-size: cover;
   display: flex;
@@ -125,7 +126,8 @@ div#chooseGameMode div.mode_wrap {
   display: flex;
   justify-content: center;
   gap: 10vh;
-  transform: translateY(15vh);
+  position: relative;
+  top: 15vh;
 }
 div#chooseGameMode div.mode_wrap div.mode_block {
   display: flex;
@@ -137,12 +139,15 @@ div#chooseGameMode div.mode_wrap div.mode_block {
   gap: 2vh;
 }
 div#chooseGameMode div.mode_wrap div.mode_block:nth-child(1) button.game_mode_btn {
+  color: #FFC840;
   box-shadow: 6px 6px 0 #FFC840;
 }
 div#chooseGameMode div.mode_wrap div.mode_block:nth-child(2) button.game_mode_btn {
+  color: #DC5827;
   box-shadow: 6px 6px 0 #DC5827;
 }
 div#chooseGameMode div.mode_wrap div.mode_block:nth-child(3) button.game_mode_btn {
+  color: #3AA162;
   box-shadow: 6px 6px 0 #3AA162;
 }
 div#chooseGameMode div.mode_wrap div.mode_block img.three_small {
@@ -170,7 +175,7 @@ div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:hover + img
 div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:active {
   transform: translate(4px, 4px);
 }
-div#chooseGameMode div.back_to_home {
+div#chooseGameMode button.back_to_home {
   width: 6vw;
   height: 6vw;
   border-radius: 10vw;
@@ -186,16 +191,17 @@ div#chooseGameMode div.back_to_home {
   bottom: 2vh;
   cursor: pointer;
 }
-div#chooseGameMode div.back_to_home:hover {
+div#chooseGameMode button.back_to_home:hover {
   background-color: #3AA162;
   color: white;
 }
-div#chooseGameMode div.back_to_home:active {
+div#chooseGameMode button.back_to_home:active {
   transform: translate(4px, 4px);
 }
 
 /* countdown */
 div#countdown {
+  z-index: 30;
   background: rgba(0, 0, 0, 0.3);
   display: none;
   font-size: 20vw;
@@ -207,15 +213,120 @@ div#controller {
   top: 0;
   display: none;
 }
+div#controller button.control {
+  width: 10vw;
+  height: 12vh;
+  border-radius: 5vw;
+  background-color: white;
+  text-align: center;
+  border: 0;
+  font-size: 2vw;
+}
 
 div#myfilter {
-  z-index: 5;
+  z-index: 10;
   background: rgba(0, 0, 0, 0.3);
   display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
+}
+div#myfilter h2.title {
+  margin: 0;
+  font-size: 8vw;
+  color: white;
+  font-weight: 400;
+}
+div#myfilter h2.title img {
+  width: 10vw;
+}
+div#myfilter h3#score {
+  margin: 0;
+  font-size: 5vw;
+  color: white;
+  font-weight: 400;
+}
+
+div.pause {
+  display: flex;
+  z-index: 5;
+  position: absolute;
+}
+div.pause div.pause {
+  z-index: 8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14vw;
+  height: 3vw;
+  border-radius: 0 0 1vw 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vw;
+}
+div.pause div.pause i {
+  font-size: 1.5vw;
+  transform: translateY(0.2vh);
+}
+div.pause div#pause_control {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+  position: absolute;
+  width: 70vw;
+  height: 60vh;
+  border-radius: 2vw;
+  background: rgba(0, 0, 0, 0.5);
+}
+div.pause div#pause_control h2.title {
+  margin: 0;
+  font-size: 5vw;
+  color: white;
+  font-weight: 400;
+}
+div.pause div#pause_control h2.title img {
+  width: 10vw;
+}
+
+div.btn_wrap {
+  display: flex;
+  justify-content: center;
+}
+div.btn_wrap button {
+  margin: 0 1vw;
+  padding: 0 2vw;
+  height: 15vh;
+  border-radius: 5vw;
+  background-color: white;
+  color: #004369;
+  text-align: center;
+  border: 0;
+  font-size: 2vw;
+}
+div.btn_wrap button:hover {
+  color: white;
+}
+div.btn_wrap button:nth-child(1):hover {
+  background-color: #FFC840;
+}
+div.btn_wrap button:nth-child(2):hover {
+  background-color: #DC5827;
+}
+div.btn_wrap button:nth-child(3):hover {
+  background-color: #3AA162;
+}
+div.btn_wrap button:nth-child(4):hover {
+  background-color: #004369;
 }
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 button:active {

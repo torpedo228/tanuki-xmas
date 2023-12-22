@@ -14,7 +14,7 @@
     integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="tanuki-xmas.js"></script>
-  <title>幸福狸貓之聖誕迷航記</title>
+  <title>肥馴鹿之聖誕迷航記</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
     <img
       class="chooseGameMode_title chooseGameMode_img animate__animated animate__tada animate__slower animate__infinite"
       src="./images/choose-game-mode/title.svg" alt="">
-    <h3 class="chooseGameMode_slogan"><i class="fa-solid fa-map-pin"></i>&ensp; 努力操控幸福狸貓躲避障礙物吧!</h3>
+    <h3 class="chooseGameMode_slogan"><i class="fa-solid fa-map-pin"></i>&ensp; 努力操控肥馴鹿躲避障礙物吧!</h3>
 
     <div class="mode_wrap">
       <div class="mode_block">
@@ -68,29 +68,64 @@
       </div>
     </div>
 
-    <div class="back_to_home" onclick="backToHome()">
+    <button class="back_to_home" onclick="backToHome()">
       <i class="fa-solid fa-house"></i>回首頁
-    </div>
+    </button>
   </div>
 
   <!-- countdown -->
-  <div id="countdown" class="full_page">3</div>
+  <div id="countdown" class="full_page"></div>
 
 
   <!-- controller -->
   <div id="controller">
-    <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
-    <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
-    <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
-    <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+    <button class="up control" onmousedown="moveup()" onmouseup="clearmove()"
+      ontouchstart="moveup()">UP</button><br><br>
+    <button class="left control" onmousedown="moveleft()" onmouseup="clearmove()"
+      ontouchstart="moveleft()">LEFT</button>
+    <button class="right control" onmousedown="moveright()" onmouseup="clearmove()"
+      ontouchstart="moveright()">RIGHT</button><br><br>
+    <button class="down control" onmousedown="movedown()" onmouseup="clearmove()"
+      ontouchstart="movedown()">DOWN</button>
   </div>
 
   <!-- restart -->
   <div id="myfilter" class="full_page">
-    <button id="myrestartbutton" onclick="restartGame()">Restart</button>
+    <h2 class="title">你讓肥馴鹿受傷了...<img src="./images/crash/sad.png" alt=""></h2>
+    <h3 id="score"></h3>
+
+    <div class="btn_wrap">
+      <button class="restart" id="myrestartbutton" onclick="restartGame()"><i
+          class="fa-solid fa-rotate-left"></i>&ensp;重新挑戰!</button>
+      <button class="back_to_home" onclick="backToChooseMode()">
+        <i class="fa-solid fa-gamepad"></i>&ensp;重新選擇操作模式
+      </button>
+      <button class="back_to_home" onclick="backToHome()">
+        <i class="fa-solid fa-house"></i>&ensp;回首頁
+      </button>
+    </div>
   </div>
 
-
+  <div class="pause full_page">
+    <div class="pause" id="pause"><i class="fa-solid fa-pause"></i>&emsp;Press Esc To
+      Pause</div>
+    <div id="pause_control">
+      <h2 class="title">肥馴鹿休息中...<img src="./images/pause/rest.png" alt=""></h2>
+      <div class="btn_wrap">
+        <button class="keep_going" onclick="keepGoing()">
+          <i class="fa-solid fa-play"></i>&ensp;繼續
+        </button>
+        <button class="restart" id="myrestartbutton" onclick="restartGame()"><i
+            class="fa-solid fa-rotate-left"></i>&ensp;重新挑戰!</button>
+        <button class="back_to_home" onclick="backToChooseMode()">
+          <i class="fa-solid fa-gamepad"></i>&ensp;重新選擇操作模式
+        </button>
+        <button class="back_to_home" onclick="backToHome()">
+          <i class="fa-solid fa-house"></i>&ensp;回首頁
+        </button>
+      </div>
+    </div>
+  </div>
 
 </body>
 

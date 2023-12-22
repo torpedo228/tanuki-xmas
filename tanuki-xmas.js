@@ -9,7 +9,8 @@ var myMusic;
 var playWithMouse;
 var playWithKeyBoard;
 var playWithController;
-
+var timeLeft = 3;
+var gameStart;
 
 // function enterHover(){
 //   mySound = new sound("./audios/chuchu.mp3");
@@ -22,23 +23,43 @@ function choosePlayMode() {
 
 function backToHome() {
   document.getElementById("entry").style.display = "block";
+  document.getElementById("chooseGameMode").style.display = "flex";
+  document.getElementById("myfilter").style.display = "none";
+  document.getElementById("controller").style.display = "none";
 }
 
 function playWithMouse() {
   playWithMouse = true;
+  // playWithKeyBoard = false;
+  // playWithController = false;
   countDown();
   document.body.style.cursor = "none";
+  console.log("playWithMouse:", playWithMouse, 'playWithKeyBoard:', playWithKeyBoard, 'playWithController', playWithController);
+
 }
 
 function playWithKeyBoard() {
   playWithKeyBoard = true;
+  // playWithMouse = false;
+  // playWithController = false;
   countDown();
+  console.log("playWithMouse:", playWithMouse, 'playWithKeyBoard:', playWithKeyBoard, 'playWithController', playWithController);
 }
 
 function playWithController() {
   playWithController = true;
+  // playWithMouse = false;
+  // playWithKeyBoard = false;
   document.getElementById("controller").style.display = "block";
   countDown();
+  console.log("playWithMouse:", playWithMouse, 'playWithKeyBoard:', playWithKeyBoard, 'playWithController', playWithController);
+
+}
+
+function backToChooseMode() {
+  document.getElementById("myfilter").style.display = "none";
+  document.getElementById("controller").style.display = "none";
+  document.getElementById("chooseGameMode").style.display = "flex";
 }
 
 
@@ -46,8 +67,7 @@ function countDown() {
   startGame();
   document.getElementById("chooseGameMode").style.display = "none";
   document.getElementById("countdown").style.display = "flex";
-
-  var timeLeft = 3;
+  document.getElementById("countdown").innerHTML = timeLeft;
   var downloadTimer = setInterval(function () {
     timeLeft--;
     document.getElementById("countdown").innerHTML = timeLeft;
@@ -56,6 +76,9 @@ function countDown() {
     } else if (timeLeft < 0) {
       clearInterval(downloadTimer);
       document.getElementById("countdown").style.display = "none";
+      timeLeft = 3;
+      gameStart = true;
+      console.log(gameStart);
     }
   }, 1000);
 
@@ -76,12 +99,48 @@ function startGame() {
   myGameArea.start();
 }
 
+
+setInterval(function () {
+  if (gameStart == true) {
+    window.addEventListener('keydown', pause);
+  }
+}, 1000);
+
+
+function pause(e) {
+  gameStart = false;
+  let key = e.key;
+  console.log(key);
+  if (key === "Escape") {
+    myGameArea.stop();
+    document.getElementById("pause_control").style.display = "flex";
+    document.body.style.cursor = "default";
+  }
+}
+
+
+function keepGoing() {
+  gameStart = true
+  myGameArea.start();
+  document.getElementById("pause_control").style.display = "none";
+  if (playWithMouse == true) {
+    document.body.style.cursor = "none";
+  }
+}
+
 function restartGame() {
+  gameStart = true
   document.getElementById("myfilter").style.display = "none";
   if (playWithMouse == true) {
     document.body.style.cursor = "none";
   }
-  startGame();
+  myGameArea.stop();
+  myGameArea.clear();
+  myGamePiece = {};
+  myObstacles = [];
+  myScore = {};
+  document.getElementsByTagName("canvas").innerHTML = "";
+  countDown();
 }
 
 var myGameArea = {
@@ -197,7 +256,11 @@ function updateGameArea() {
     if (myGamePiece.crashWith(myObstacles[i])) {
       // mySound.play();
       myGameArea.stop();
+      gameStart = false;
       document.getElementById("myfilter").style.display = "flex";
+      document.getElementById("countdown").style.display = "none";
+      timeLeft = 3;
+      document.getElementById("score").innerHTML = "得分:" + Math.floor(myGameArea.frameNo) + "顆狸猫粉";
       document.body.style.cursor = "default";
       return;
     }
