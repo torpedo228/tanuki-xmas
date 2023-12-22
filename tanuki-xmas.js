@@ -20,6 +20,10 @@ function choosePlayMode() {
   document.getElementById("entry").style.display = "none";
 }
 
+function backToHome() {
+  document.getElementById("entry").style.display = "block";
+}
+
 function playWithMouse() {
   playWithMouse = true;
   countDown();
@@ -40,14 +44,16 @@ function playWithController() {
 
 function countDown() {
   startGame();
-  document.getElementById("choosePlayMode").style.display = "none";
+  document.getElementById("chooseGameMode").style.display = "none";
   document.getElementById("countdown").style.display = "flex";
 
   var timeLeft = 3;
   var downloadTimer = setInterval(function () {
     timeLeft--;
     document.getElementById("countdown").innerHTML = timeLeft;
-    if (timeLeft < 0) {
+    if (timeLeft == 0) {
+      document.getElementById("countdown").innerHTML = 'Start!'
+    } else if (timeLeft < 0) {
       clearInterval(downloadTimer);
       document.getElementById("countdown").style.display = "none";
     }

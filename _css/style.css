@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap");
+* {
+  font-family: "Kiwi Maru", serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+div.full_page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+div#entry {
+  z-index: 10;
+  background-image: url("../images/entry/background.png");
+  background-size: cover;
+}
+div#entry .entry_img {
+  position: absolute;
+  width: 10vw;
+}
+div#entry img.entry_title {
+  width: 40vw;
+  top: 10vh;
+  right: 5vw;
+}
+div#entry h3.entry_slogan {
+  color: white;
+  font-style: italic;
+  font-size: 2.5vw;
+  position: absolute;
+  right: 5vw;
+  top: 40vh;
+}
+div#entry a.donate {
+  width: 33vw;
+  height: 33vw;
+  z-index: 5;
+  bottom: 0;
+  left: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#entry a.donate:hover {
+  transform: scale(1.3);
+  transition: 0.2s;
+}
+div#entry a.donate img.tanuki_in_shoe {
+  height: 100%;
+}
+div#entry img.snowman {
+  width: 15vw;
+  bottom: 5vh;
+  right: 5vw;
+}
+div#entry div.button_wrap {
+  position: absolute;
+  bottom: 10vh;
+  right: 30vw;
+  text-align: center;
+}
+div#entry div.button_wrap button#enter {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 100px;
+  background-color: white;
+  color: #FFC840;
+  box-shadow: 6px 6px 0 #FFC840;
+  font-size: 5vw;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#entry div.button_wrap button#enter i {
+  position: relative;
+  left: 0.5vw;
+}
+div#entry div.button_wrap button#enter:hover {
+  background-color: #DC5827;
+  color: #3AA162;
+  box-shadow: 6px 6px 0 #3AA162;
+}
+div#entry div.button_wrap h2.play {
+  color: white;
+  font-style: italic;
+  font-size: 3vw;
+}
+
+/* chooseGameMode */
+div#chooseGameMode {
+  background-image: url("../images/choose-game-mode/background.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+div#chooseGameMode img.chooseGameMode_title {
+  width: 40vw;
+  position: absolute;
+  top: 10vh;
+  right: 14vw;
+}
+div#chooseGameMode h3.chooseGameMode_slogan {
+  color: #FFC840;
+  font-style: italic;
+  font-size: 2.5vw;
+  position: absolute;
+  right: 15vw;
+  top: 22vh;
+}
+div#chooseGameMode div.mode_wrap {
+  display: flex;
+  justify-content: center;
+  gap: 10vh;
+  transform: translateY(15vh);
+}
+div#chooseGameMode div.mode_wrap div.mode_block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column-reverse;
+  width: 20vw;
+  height: 48vh;
+  gap: 2vh;
+}
+div#chooseGameMode div.mode_wrap div.mode_block:nth-child(1) button.game_mode_btn {
+  box-shadow: 6px 6px 0 #FFC840;
+}
+div#chooseGameMode div.mode_wrap div.mode_block:nth-child(2) button.game_mode_btn {
+  box-shadow: 6px 6px 0 #DC5827;
+}
+div#chooseGameMode div.mode_wrap div.mode_block:nth-child(3) button.game_mode_btn {
+  box-shadow: 6px 6px 0 #3AA162;
+}
+div#chooseGameMode div.mode_wrap div.mode_block img.three_small {
+  height: 35vh;
+  object-fit: cover;
+}
+div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn {
+  position: relative;
+  z-index: 10;
+  width: 80%;
+  height: 12vh;
+  border-radius: 5vw;
+  background-color: white;
+  text-align: center;
+  border: 0;
+  font-size: 2vw;
+}
+div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:hover {
+  opacity: 0.9;
+}
+div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:hover + img.three_small {
+  transform: scale(1.3);
+  transition: 0.2s;
+}
+div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:active {
+  transform: translate(4px, 4px);
+}
+div#chooseGameMode div.back_to_home {
+  width: 6vw;
+  height: 6vw;
+  border-radius: 10vw;
+  background-color: white;
+  color: #004369;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+  right: 2vw;
+  bottom: 2vh;
+  cursor: pointer;
+}
+div#chooseGameMode div.back_to_home:hover {
+  background-color: #3AA162;
+  color: white;
+}
+div#chooseGameMode div.back_to_home:active {
+  transform: translate(4px, 4px);
+}
+
+/* countdown */
+div#countdown {
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  font-size: 20vw;
+  color: white;
+}
+
+div#controller {
+  position: absolute;
+  top: 0;
+  display: none;
+}
+
+div#myfilter {
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: translate(4px, 4px);
+}/*# sourceMappingURL=style.css.map */

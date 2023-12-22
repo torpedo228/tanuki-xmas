@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./images/tanuki-xmas.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="./images/tanuki-xmas.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./_css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,15 +20,17 @@
 <body>
 
   <!-- entry -->
-  <div id="entry" class="fullPage">
-    <img class="title entry-img animate__animated animate__swing animate__slow animate__infinite"
+  <div id="entry" class="full_page">
+    <img class="entry_title entry_img animate__animated animate__swing animate__slow animate__infinite"
       src="./images/entry/title.svg" alt="">
-    <a class="donate entry-img " href="https://www.buymeacoffee.com/tanuki.jr" target="_blank"><img
-        class="tanuki-in-shoe animate__animated animate__jackInTheBox" src="./images/entry/tanuki-in-shoe.png" alt="">
-    </a>
-    <img class="snowman entry-img animate__animated animate__bounceInRight" src="./images/entry/snowman.svg" alt="">
+    <h3 class="entry_slogan animate__animated animate__lightSpeedInRight">狸猫遊戲第一彈!</h3>
 
-    <h3 class="slogan">狸猫遊戲第一彈!</h3>
+    <a class="donate entry_img " href="https://www.buymeacoffee.com/tanuki.jr" target="_blank"><img
+        class="tanuki_in_shoe animate__animated animate__jackInTheBox" src="./images/entry/tanuki-in-shoe.png" alt="">
+    </a>
+    <img class="snowman entry_img animate__animated animate__bounceInUp" src="./images/entry/snowman.svg" alt="">
+
+
 
     <div class="button_wrap">
       <button id="enter" onclick="choosePlayMode()" onmouseenter="enterHover()">
@@ -39,14 +41,40 @@
   </div>
 
   <!-- choosePlayMode -->
-  <div id="choosePlayMode" class="fullPage">
-    <button id="mousePlay" onclick="playWithMouse()">滑鼠</button>
-    <button id="keyBoardPlay" onclick="playWithKeyBoard()">方向鍵</button>
-    <button id="controllerPlay" onclick="playWithController()">控制鍵</button>
+  <div id="chooseGameMode" class="full_page">
+    <img
+      class="chooseGameMode_title chooseGameMode_img animate__animated animate__tada animate__slower animate__infinite"
+      src="./images/choose-game-mode/title.svg" alt="">
+    <h3 class="chooseGameMode_slogan"><i class="fa-solid fa-map-pin"></i>&ensp; 努力操控幸福狸貓躲避障礙物吧!</h3>
+
+    <div class="mode_wrap">
+      <div class="mode_block">
+        <button class="game_mode_btn" id="mousePlay" onclick="playWithMouse()">滑鼠&ensp;<i
+            class="fa-solid fa-computer-mouse"></i></button>
+        <img class="three_small" src="./images/choose-game-mode/bro.png" alt="">
+
+      </div>
+
+      <div class="mode_block">
+        <button class="game_mode_btn" id="keyBoardPlay" onclick="playWithKeyBoard()">方向鍵&ensp;<i
+            class="fa-solid fa-keyboard"></i></button>
+        <img class="three_small" src="./images/choose-game-mode/bin.png" alt="">
+      </div>
+
+      <div class="mode_block">
+        <button class="game_mode_btn" id="controllerPlay" onclick="playWithController()">螢幕控制鍵&ensp;<i
+            class="fa-solid fa-arrow-pointer"></i></button>
+        <img class="three_small" src="./images/choose-game-mode/tooth.png" alt="">
+      </div>
+    </div>
+
+    <div class="back_to_home" onclick="backToHome()">
+      <i class="fa-solid fa-house"></i>回首頁
+    </div>
   </div>
 
   <!-- countdown -->
-  <div id="countdown" class="fullPage">3</div>
+  <div id="countdown" class="full_page">3</div>
 
 
   <!-- controller -->
@@ -57,10 +85,11 @@
     <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
   </div>
 
-<!-- restart -->
-  <div id="myfilter" class="fullPage">
+  <!-- restart -->
+  <div id="myfilter" class="full_page">
     <button id="myrestartbutton" onclick="restartGame()">Restart</button>
   </div>
+
 
 
 </body>
