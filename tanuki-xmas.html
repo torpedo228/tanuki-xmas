@@ -48,6 +48,35 @@
     </div>
   </div>
 
+
+  <!-- ranking -->
+  <div id="ranking" class="full_page">
+    <img class="title" src="./images/ranking/title.svg" alt="">
+    <div class="ranking_table">
+      <img class="deco" src="./images/ranking/proud.png" alt="">
+      <table>
+        <tr>
+          <th class="rank">名次</th>
+          <th>匿稱</th>
+          <th>日期</th>
+          <th>狸猫粉</th>
+        </tr>
+        <tr class="record">
+          <td class="rank">1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div id="recordPopUp">
+    <label>請輸入暱稱:</label>
+    <input type="text">
+    <button class="submit" type="submit" onclick="submit()">登錄</button>
+  </div>
+
   <!-- choosePlayMode -->
   <div id="chooseGameMode" class="full_page">
     <img
@@ -75,10 +104,6 @@
         <img class="three_small" src="./images/choose-game-mode/tooth.png" alt="">
       </div>
     </div>
-
-    <button class="back_to_home" onclick="backToHome()">
-      <i class="fa-solid fa-house"></i>回首頁
-    </button>
   </div>
 
   <!-- countdown -->
@@ -87,14 +112,16 @@
 
   <!-- controller -->
   <div id="controller">
-    <button class="up control" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()"><i class="fa-solid fa-caret-up"></i></button>
+    <button class="up control" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()"><i
+        class="fa-solid fa-caret-up"></i></button>
     <div class="middle_wrap">
-      <button class="left control" onmousedown="moveleft()" onmouseup="clearmove()"
-        ontouchstart="moveleft()"><i class="fa-solid fa-caret-left"></i></button>
-      <button class="right control" onmousedown="moveright()" onmouseup="clearmove()"
-        ontouchstart="moveright()"><i class="fa-solid fa-caret-right"></i></button>
+      <button class="left control" onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()"><i
+          class="fa-solid fa-caret-left"></i></button>
+      <button class="right control" onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()"><i
+          class="fa-solid fa-caret-right"></i></button>
     </div>
-    <button class="down control" onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()"><i class="fa-solid fa-caret-down"></i></button>
+    <button class="down control" onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()"><i
+        class="fa-solid fa-caret-down"></i></button>
   </div>
 
   <!-- restart -->
@@ -105,8 +132,11 @@
     <div class="btn_wrap">
       <button class="restart" id="myrestartbutton" onclick="restartGame()"><i
           class="fa-solid fa-rotate-left"></i>&ensp;重新挑戰!</button>
-      <button class="back_to_home" onclick="backToChooseMode()">
-        <i class="fa-solid fa-gamepad"></i>&ensp;重新選擇操作模式
+      <button class="choose_game_mode" onclick="backToChooseMode()">
+        <i class="fa-solid fa-gamepad"></i>&ensp;更改操作模式
+      </button>
+      <button class="record" onclick="record()">
+        <i class="fa-solid fa-feather-pointed"></i>&ensp;登錄至排行榜
       </button>
       <button class="back_to_home" onclick="backToHome()">
         <i class="fa-solid fa-house"></i>&ensp;回首頁
@@ -114,7 +144,7 @@
     </div>
   </div>
 
-  <div class="pause full_page">
+  <div id="pause" class="pause full_page">
     <div class="pause_bar" id="pause"><i class="fa-solid fa-pause"></i>&emsp;Press Esc To
       Pause</div>
     <div id="pause_control">
@@ -126,7 +156,7 @@
         <button class="restart" id="myrestartbutton" onclick="restartGame()"><i
             class="fa-solid fa-rotate-left"></i>&ensp;重新挑戰!</button>
         <button class="back_to_home" onclick="backToChooseMode()">
-          <i class="fa-solid fa-gamepad"></i>&ensp;重新選擇操作模式
+          <i class="fa-solid fa-gamepad"></i>&ensp;更改操作模式
         </button>
         <button class="back_to_home" onclick="backToHome()">
           <i class="fa-solid fa-house"></i>&ensp;回首頁
@@ -135,6 +165,9 @@
     </div>
   </div>
 
+  <button id="home" class="back_to_home" onclick="backToHome()">
+    <i class="fa-solid fa-house"></i>回首頁
+  </button>
 </body>
 
 </html>

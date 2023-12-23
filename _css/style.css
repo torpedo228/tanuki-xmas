@@ -17,13 +17,14 @@ div.full_page {
   height: 100%;
   position: absolute;
   top: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
 div#entry {
-  z-index: 999;
+  z-index: 10;
   background-image: url("../images/entry/background.png");
   background-size: cover;
 }
@@ -47,7 +48,6 @@ div#entry h3.entry_slogan {
 div#entry a.donate {
   width: 33vw;
   height: 33vw;
-  z-index: 5;
   bottom: 0;
   left: 5vw;
   display: flex;
@@ -132,9 +132,114 @@ div#entry div.button_wrap h2.rank {
   font-size: 2vw;
 }
 
+div#ranking {
+  z-index: 8;
+  background-image: url("../images/ranking/background.png");
+  background-size: cover;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  gap: 4vh;
+}
+div#ranking img.title {
+  width: 20vw;
+}
+div#ranking div.ranking_table {
+  box-sizing: border-box;
+  padding: 2vw;
+  width: 60vw;
+  height: 70vh;
+  border-radius: 1.5vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  position: relative;
+}
+div#ranking div.ranking_table img.deco {
+  width: 30vw;
+  position: absolute;
+  bottom: 0;
+  right: 2vw;
+  opacity: 0.6;
+}
+div#ranking div.ranking_table table::-webkit-scrollbar {
+  display: none;
+}
+div#ranking div.ranking_table table {
+  width: 58vw;
+  height: 30vw;
+  font-size: 2vw;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  overflow-y: scroll;
+  border-collapse: collapse;
+}
+div#ranking div.ranking_table table tr:first-child {
+  border-bottom: 1px solid #004369;
+}
+div#ranking div.ranking_table table tr.record:nth-child(odd) {
+  background-color: #9CBBCD;
+}
+div#ranking div.ranking_table table th {
+  font-weight: 400;
+  color: #004369;
+}
+div#ranking div.ranking_table table th.rank {
+  color: #DC5827;
+}
+div#ranking div.ranking_table table td {
+  color: #002B41;
+}
+div#ranking div.ranking_table table td.rank {
+  color: #DC5827;
+  font-weight: bold;
+}
+div#ranking div.ranking_table table td,
+div#ranking div.ranking_table table th {
+  text-align: center;
+  width: 15vw;
+  height: 5vh;
+}
+
+div#recordPopUp {
+  z-index: 8;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  width: 28vw;
+  height: 10vh;
+  border-radius: 5vw;
+  color: white;
+  position: absolute;
+  bottom: 2vh;
+  right: 20vw;
+  background-color: #3AA162;
+}
+div#recordPopUp input {
+  padding: 0 0.5vw;
+  width: 12vw;
+  height: 5vh;
+  border-radius: 0.3vw;
+  border: none;
+}
+div#recordPopUp button.submit {
+  width: 4vw;
+  height: 5vh;
+  border-radius: 5vw;
+  background-color: #DC5827;
+  color: white;
+}
+div#recordPopUp button.submit:hover {
+  opacity: 0.8;
+}
+
 /* chooseGameMode */
 div#chooseGameMode {
-  z-index: 50;
+  z-index: 9;
   background-image: url("../images/choose-game-mode/background.png");
   background-size: cover;
   display: none;
@@ -188,7 +293,7 @@ div#chooseGameMode div.mode_wrap div.mode_block img.three_small {
 }
 div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn {
   position: relative;
-  z-index: 10;
+  z-index: 1;
   width: 80%;
   height: 12vh;
   border-radius: 5vw;
@@ -207,32 +312,10 @@ div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:hover + img
 div#chooseGameMode div.mode_wrap div.mode_block button.game_mode_btn:active {
   transform: translate(4px, 4px);
 }
-div#chooseGameMode button.back_to_home {
-  width: 6vw;
-  height: 6vw;
-  border-radius: 10vw;
-  background-color: white;
-  color: #004369;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5vw;
-  right: 2vw;
-  bottom: 2vh;
-  cursor: pointer;
-}
-div#chooseGameMode button.back_to_home:hover {
-  color: #DC5827;
-}
-div#chooseGameMode button.back_to_home:active {
-  transform: translate(4px, 4px);
-}
 
 /* countdown */
 div#countdown {
-  z-index: 30;
+  z-index: 7;
   background: rgba(0, 0, 0, 0.3);
   display: none;
   font-size: 20vw;
@@ -241,7 +324,6 @@ div#countdown {
 
 div#controller {
   width: 20vw;
-  z-index: 20;
   position: absolute;
   transform: translateX(-50%);
   left: 50vw;
@@ -289,7 +371,7 @@ div#controller button.down {
 }
 
 div#myfilter {
-  z-index: 200;
+  z-index: 7;
   background: rgba(0, 0, 0, 0.3);
   display: none;
   flex-direction: column;
@@ -313,11 +395,9 @@ div#myfilter h3#score {
 }
 
 div.pause {
-  display: flex;
   position: absolute;
 }
 div.pause div.pause_bar {
-  z-index: 10;
   position: absolute;
   top: 0;
   left: 0;
@@ -336,14 +416,13 @@ div.pause div.pause_bar i {
   transform: translateY(0.2vh);
 }
 div.pause div#pause_control {
-  z-index: 999;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5vh;
   position: absolute;
-  width: 70vw;
+  width: 60vw;
   height: 60vh;
   border-radius: 2vw;
   background: rgba(0, 0, 0, 0.5);
@@ -371,7 +450,7 @@ div.btn_wrap button {
   color: #004369;
   text-align: center;
   border: 0;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 div.btn_wrap button:hover {
   color: white;
@@ -389,11 +468,31 @@ div.btn_wrap button:nth-child(4):hover {
   background-color: #004369;
 }
 
+button#home {
+  z-index: 9;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 10vw;
+  background-color: white;
+  color: #004369;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+  right: 1vw;
+  bottom: 2vh;
+  cursor: pointer;
+}
+button#home:hover {
+  color: #DC5827;
+}
+button#home:active {
+  transform: translate(4px, 4px);
+}
+
 button {
   cursor: pointer;
   border: none;
-}
-
-button:active {
-  transform: translate(4px, 4px);
 }/*# sourceMappingURL=style.css.map */

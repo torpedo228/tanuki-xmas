@@ -22,7 +22,10 @@ var timeLeft;
 
 function choosePlayMode() {
   document.getElementById("entry").style.display = "none";
+  document.getElementById("ranking").style.display = "none";
   document.getElementById("chooseGameMode").style.display = "flex";
+  document.getElementById("home").style.display = "flex";
+
 }
 
 function backToHome() {
@@ -31,6 +34,21 @@ function backToHome() {
   document.getElementById("myfilter").style.display = "none";
   document.getElementById("pause_control").style.display = "none";
   document.getElementById("controller").style.display = "none";
+}
+
+function goToRanking() {
+  document.getElementById("entry").style.display = "none";
+  document.getElementById("ranking").style.display = "flex";
+  document.getElementById("home").style.display = "flex";
+}
+
+function record() {
+  document.getElementById("recordPopUp").style.display = "flex";
+}
+
+function submit() {
+  alert('登錄成功!')
+  document.getElementById("recordPopUp").style.display = "none";
 }
 
 function playWithMouse() {
@@ -62,6 +80,7 @@ function backToChooseMode() {
   document.getElementById("controller").style.display = "none";
   document.getElementById("pause_control").style.display = "none";
   document.getElementById("chooseGameMode").style.display = "flex";
+  document.getElementById("home").style.display = "flex";
 }
 
 
@@ -70,6 +89,7 @@ function countDown() {
   gameStart = false;
   timeLeft = 3;
   startGame();
+  document.getElementById("home").style.display = "none";
   document.getElementById("chooseGameMode").style.display = "none";
   document.getElementById("pause_control").style.display = "none";
   document.getElementById("countdown").style.display = "flex";
@@ -226,7 +246,7 @@ function component(width, height, color, x, y, type) {
 
     if (type == "image" || type == "background") {
       ctx.drawImage(
-        this.image,this.x,this.y,this.width, this.height
+        this.image, this.x, this.y, this.width, this.height
       );
       if (type == "background") {
         ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
