@@ -53,7 +53,7 @@
     <img
       class="chooseGameMode_title chooseGameMode_img animate__animated animate__tada animate__slower animate__infinite"
       src="./images/choose-game-mode/title.svg" alt="">
-    <h3 class="chooseGameMode_slogan"><i class="fa-solid fa-map-pin"></i>&ensp; 努力操控肥馴鹿躲避障礙物吧!</h3>
+    <h3 class="chooseGameMode_slogan"><i class="fa-solid fa-map-pin"></i>&ensp;努力操控肥馴鹿躲避障礙物吧!</h3>
 
     <div class="mode_wrap">
       <div class="mode_block">
@@ -87,14 +87,14 @@
 
   <!-- controller -->
   <div id="controller">
-    <button class="up control" onmousedown="moveup()" onmouseup="clearmove()"
-      ontouchstart="moveup()">UP</button><br><br>
-    <button class="left control" onmousedown="moveleft()" onmouseup="clearmove()"
-      ontouchstart="moveleft()">LEFT</button>
-    <button class="right control" onmousedown="moveright()" onmouseup="clearmove()"
-      ontouchstart="moveright()">RIGHT</button><br><br>
-    <button class="down control" onmousedown="movedown()" onmouseup="clearmove()"
-      ontouchstart="movedown()">DOWN</button>
+    <button class="up control" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()"><i class="fa-solid fa-caret-up"></i></button>
+    <div class="middle_wrap">
+      <button class="left control" onmousedown="moveleft()" onmouseup="clearmove()"
+        ontouchstart="moveleft()"><i class="fa-solid fa-caret-left"></i></button>
+      <button class="right control" onmousedown="moveright()" onmouseup="clearmove()"
+        ontouchstart="moveright()"><i class="fa-solid fa-caret-right"></i></button>
+    </div>
+    <button class="down control" onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()"><i class="fa-solid fa-caret-down"></i></button>
   </div>
 
   <!-- restart -->
@@ -115,7 +115,7 @@
   </div>
 
   <div class="pause full_page">
-    <div class="pause" id="pause"><i class="fa-solid fa-pause"></i>&emsp;Press Esc To
+    <div class="pause_bar" id="pause"><i class="fa-solid fa-pause"></i>&emsp;Press Esc To
       Pause</div>
     <div id="pause_control">
       <h2 class="title">肥馴鹿休息中...<img src="./images/pause/rest.png" alt=""></h2>

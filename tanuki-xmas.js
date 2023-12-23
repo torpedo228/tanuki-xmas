@@ -6,11 +6,14 @@ var myObstacles = [];
 var myScore;
 var mySound;
 var myMusic;
-var playWithMouse;
-var playWithKeyBoard;
-var playWithController;
-var timeLeft = 3;
+var MousePlaying;
+var keyBoardPlaying;
+var ControllerPlaying;
 var gameStart;
+var counting;
+var isCrashed;
+var isPaused;
+var timeLeft;
 
 // function enterHover(){
 //   mySound = new sound("./audios/chuchu.mp3");
@@ -19,76 +22,82 @@ var gameStart;
 
 function choosePlayMode() {
   document.getElementById("entry").style.display = "none";
+  document.getElementById("chooseGameMode").style.display = "flex";
 }
 
 function backToHome() {
   document.getElementById("entry").style.display = "block";
-  document.getElementById("chooseGameMode").style.display = "flex";
+  document.getElementById("chooseGameMode").style.display = "none";
   document.getElementById("myfilter").style.display = "none";
+  document.getElementById("pause_control").style.display = "none";
   document.getElementById("controller").style.display = "none";
 }
 
 function playWithMouse() {
-  playWithMouse = true;
-  // playWithKeyBoard = false;
-  // playWithController = false;
+  MousePlaying = true;
+  keyBoardPlaying = false;
+  ControllerPlaying = false;
   countDown();
   document.body.style.cursor = "none";
-  console.log("playWithMouse:", playWithMouse, 'playWithKeyBoard:', playWithKeyBoard, 'playWithController', playWithController);
-
 }
 
 function playWithKeyBoard() {
-  playWithKeyBoard = true;
-  // playWithMouse = false;
-  // playWithController = false;
+  keyBoardPlaying = true;
+  MousePlaying = false;
+  ControllerPlaying = false;
   countDown();
-  console.log("playWithMouse:", playWithMouse, 'playWithKeyBoard:', playWithKeyBoard, 'playWithController', playWithController);
 }
 
 function playWithController() {
-  playWithController = true;
-  // playWithMouse = false;
-  // playWithKeyBoard = false;
-  document.getElementById("controller").style.display = "block";
+  ControllerPlaying = true;
+  MousePlaying = false;
+  keyBoardPlaying = false;
+  document.getElementById("controller").style.display = "flex";
   countDown();
-  console.log("playWithMouse:", playWithMouse, 'playWithKeyBoard:', playWithKeyBoard, 'playWithController', playWithController);
-
 }
 
 function backToChooseMode() {
+  reset();
   document.getElementById("myfilter").style.display = "none";
   document.getElementById("controller").style.display = "none";
+  document.getElementById("pause_control").style.display = "none";
   document.getElementById("chooseGameMode").style.display = "flex";
 }
 
 
 function countDown() {
+  counting = true;
+  gameStart = false;
+  timeLeft = 3;
   startGame();
   document.getElementById("chooseGameMode").style.display = "none";
+  document.getElementById("pause_control").style.display = "none";
   document.getElementById("countdown").style.display = "flex";
   document.getElementById("countdown").innerHTML = timeLeft;
+
+  if (isCrashed == true) {
+    clearInterval(downloadTimer);
+  }
+
   var downloadTimer = setInterval(function () {
-    timeLeft--;
+    timeLeft -= 1;
     document.getElementById("countdown").innerHTML = timeLeft;
-    if (timeLeft == 0) {
+    if (timeLeft === 0) {
       document.getElementById("countdown").innerHTML = 'Start!'
     } else if (timeLeft < 0) {
       clearInterval(downloadTimer);
       document.getElementById("countdown").style.display = "none";
-      timeLeft = 3;
+      counting = false;
       gameStart = true;
-      console.log(gameStart);
     }
   }, 1000);
-
-
 }
 
 function startGame() {
+  document.getElementById("controller").style.zIndex = 20;
   myBackground = new component(canvasWidth, canvasHeight, "./images/game/background.png", 0, 0, "background");
-  myGamePiece = new component(120, 150, "./images/game/tanudeer.svg", 10, 120, "image");
-  myScore = new component("30px", "Consolas", "black", canvasWidth - 250, 40, "text");
+  myGamePiece = new component(120, 150, "./images/game/tanudeer.png", 10, 120, "image");
+  myScore = new component("30px", "Kiwi Maru", "black", canvasWidth - 250, 60, "text");
   // mySound = new sound("./audios/chuchu.mp3");
   myMusic = new sound("./audios/JingleBells.mp3");
 
@@ -101,46 +110,60 @@ function startGame() {
 
 
 setInterval(function () {
-  if (gameStart == true) {
-    window.addEventListener('keydown', pause);
-  }
-}, 1000);
-
+  window.addEventListener('keydown', pause);
+}, 10);
 
 function pause(e) {
-  gameStart = false;
-  let key = e.key;
-  console.log(key);
-  if (key === "Escape") {
-    myGameArea.stop();
-    document.getElementById("pause_control").style.display = "flex";
-    document.body.style.cursor = "default";
+  if (gameStart == true && counting == false) {
+    let key = e.key;
+    if (key === "Escape") {
+      myGameArea.stop();
+      document.getElementById("pause_control").style.display = "flex";
+      document.getElementById("controller").style.zIndex = 0;
+      document.body.style.cursor = "default";
+      counting = false;
+      gameStart = false;
+      isPaused = true;
+    }
   }
+
 }
 
 
 function keepGoing() {
-  gameStart = true
+  counting = false;
+  gameStart = true;
+  isCrashed = false;
+  isPaused = false;
   myGameArea.start();
   document.getElementById("pause_control").style.display = "none";
+  document.getElementById("controller").style.zIndex = 20;
   if (playWithMouse == true) {
     document.body.style.cursor = "none";
   }
 }
 
 function restartGame() {
-  gameStart = true
+  if (isPaused == true) {
+    isCrashed = false;
+  }
+  reset();
+  countDown();
   document.getElementById("myfilter").style.display = "none";
-  if (playWithMouse == true) {
+  document.getElementById("pause_control").style.display = "none";
+  document.getElementById("controller").style.zIndex = 20;
+  if (MousePlaying == true) {
     document.body.style.cursor = "none";
   }
+}
+
+function reset() {
   myGameArea.stop();
   myGameArea.clear();
   myGamePiece = {};
   myObstacles = [];
   myScore = {};
   document.getElementsByTagName("canvas").innerHTML = "";
-  countDown();
 }
 
 var myGameArea = {
@@ -154,7 +177,7 @@ var myGameArea = {
     this.interval = setInterval(updateGameArea, 20);
 
     // mouse playing
-    if (playWithMouse == true) {
+    if (MousePlaying == true) {
       window.addEventListener('mousemove', function (e) {
         myGameArea.x = e.pageX;
         myGameArea.y = e.pageY;
@@ -162,7 +185,7 @@ var myGameArea = {
     }
 
     // keyboard playing
-    if (playWithKeyBoard == true) {
+    if (keyBoardPlaying == true) {
       window.addEventListener('keydown', function (e) {
         myGameArea.keys = (myGameArea.keys || []);
         myGameArea.keys[e.keyCode] = true;
@@ -184,6 +207,10 @@ var myGameArea = {
 
 function component(width, height, color, x, y, type) {
   this.type = type;
+  if (type == "image" || type == "background") {
+    this.image = new Image();
+    this.image.src = color;
+  }
   this.width = width;
   this.height = height;
   this.speedX = 0;
@@ -192,18 +219,14 @@ function component(width, height, color, x, y, type) {
   this.y = y;
   this.update = function () {
     ctx = myGameArea.context;
-
-    if (type == "image" || type == "background") {
-      this.image = new Image();
-      this.image.src = color;
+    if (type == "image") {
+      this.width = this.image.naturalWidth;
+      this.height = this.image.naturalHeight;
     }
 
     if (type == "image" || type == "background") {
       ctx.drawImage(
-        this.image,
-        this.x,
-        this.y,
-        this.width, this.height
+        this.image,this.x,this.y,this.width, this.height
       );
       if (type == "background") {
         ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
@@ -252,14 +275,17 @@ function component(width, height, color, x, y, type) {
 function updateGameArea() {
   var x, y;
 
+  // crash 
   for (i = 0; i < myObstacles.length; i++) {
     if (myGamePiece.crashWith(myObstacles[i])) {
       // mySound.play();
       myGameArea.stop();
+      counting = false;
       gameStart = false;
+      isCrashed = true;
       document.getElementById("myfilter").style.display = "flex";
       document.getElementById("countdown").style.display = "none";
-      timeLeft = 3;
+      document.getElementById("pause_control").style.display = "none";
       document.getElementById("score").innerHTML = "得分:" + Math.floor(myGameArea.frameNo) + "顆狸猫粉";
       document.body.style.cursor = "default";
       return;
@@ -269,36 +295,53 @@ function updateGameArea() {
   myGameArea.clear();
 
   // background
-  myBackground.speedX = -1;
+
+  if (myGameArea.frameNo < 500) {
+    myBackground.speedX = -1;
+  } else if (myGameArea.frameNo >= 500 && myGameArea.frameNo < 1000) {
+    myBackground.speedX = -1.5;
+  } else if (myGameArea.frameNo >= 1000) {
+    myBackground.speedX = -2;
+  }
   myBackground.newPos();
   myBackground.update();
 
   // frame
   setTimeout(function () {
-    myGameArea.frameNo += 0.2;
-    if (myGameArea.frameNo == 1 || everyInterval(200)) {
+    myGameArea.frameNo += 0.5;
+    if (myGameArea.frameNo == 1 || everyInterval(250)) {
       x = myGameArea.canvas.width;
-      minHeight = 20;
-      maxHeight = 300;
-      height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-      minGap = 50;
-      maxGap = 300;
-      gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-      myObstacles.push(new component(50, height, "green", x, 0));
-      myObstacles.push(new component(50, x - height - gap, "green", x, height + gap));
+      y = myGameArea.canvas.height;
+      let obstacle1 = `./images/obstacles/obstacle_${getRandom(1, 12)}.png`
+      let obstacle2 = `./images/obstacles/obstacle_${getRandom(1, 12)}.png`
+      myObstacles.push(new component(this.width, this.height, obstacle1, x, getRandom(0, y / 2 - 100), "image"));
+      myObstacles.push(new component(this.width, this.height, obstacle2, x, getRandom(y / 2, y - 100), "image"));
     }
   }, 4000);
 
+  function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  };
+
   for (i = 0; i < myObstacles.length; i++) {
-    myObstacles[i].x += -1;
+    if (myGameArea.frameNo < 500) {
+      myObstacles[i].x += -1;
+    } else if (myGameArea.frameNo >= 500 && myGameArea.frameNo < 1000) {
+      myObstacles[i].x += -1.5;
+    } else if (myGameArea.frameNo >= 1000) {
+      myObstacles[i].x += -2;
+    }
     myObstacles[i].update();
   }
 
-  myScore.text = "狸貓粉: " + Math.floor(myGameArea.frameNo) + "顆";
+  myGamePiece.newPos();
+  myGamePiece.update();
+
+  myScore.text = "狸猫粉: " + Math.floor(myGameArea.frameNo) + "顆";
   myScore.update();
 
   // mouse playing
-  if (playWithMouse == true) {
+  if (MousePlaying == true) {
     if (myGameArea.x && myGameArea.y) {
       myGamePiece.x = myGameArea.x;
       myGamePiece.y = myGameArea.y;
@@ -306,7 +349,7 @@ function updateGameArea() {
   }
 
   // keyboard playing
-  if (playWithKeyBoard == true) {
+  if (keyBoardPlaying == true) {
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
     if (myGameArea.keys && myGameArea.keys[37]) {
@@ -322,8 +365,7 @@ function updateGameArea() {
       myGamePiece.speedY = 10;
     }
   }
-  myGamePiece.newPos();
-  myGamePiece.update();
+
 }
 
 function everyInterval(n) {
