@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="tanuki-xmas.js"></script>
+  <script src="get-ranking-record.js"></script>
   <title>肥馴鹿之聖誕迷航記</title>
 </head>
 
@@ -62,10 +64,10 @@
           <th>狸猫粉</th>
         </tr>
         <tr class="record">
-          <td class="rank">1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
+          <td id="rank"></td>
+          <td id="name"></td>
+          <td id="date"></td>
+          <td id="score"></td>
         </tr>
       </table>
     </div>
