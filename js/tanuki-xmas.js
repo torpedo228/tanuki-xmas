@@ -14,18 +14,26 @@ var counting;
 var isCrashed;
 var isPaused;
 var timeLeft;
+var musicPlayed = false;
 
-// function enterHover(){
-//   mySound = new sound("./audios/chuchu.mp3");
-//   mySound.play();
-// }
+function enterHover() {
+  mySound = new sound("./audios/chuchu.mp3");
+  mySound.play();
+}
 
 function choosePlayMode() {
   document.getElementById("entry").style.display = "none";
   document.getElementById("ranking").style.display = "none";
   document.getElementById("chooseGameMode").style.display = "flex";
   document.getElementById("home").style.display = "flex";
-
+  myMusic = new sound("./audios/JingleBells.mp3");
+  document.getElementById("entry").addEventListener("click", function () {
+    if (musicPlayed == false) {
+      myMusic.loop = true;
+      myMusic.play()
+      musicPlayed = true;
+    }
+  })
 }
 
 function backToHome() {
@@ -34,12 +42,23 @@ function backToHome() {
   document.getElementById("myfilter").style.display = "none";
   document.getElementById("pause_control").style.display = "none";
   document.getElementById("controller").style.display = "none";
+  document.getElementById("surprise").style.display = "none";
 }
 
 function goToRanking() {
   document.getElementById("entry").style.display = "none";
+  document.getElementById("recordPopUp").style.display = "none";
   document.getElementById("ranking").style.display = "flex";
   document.getElementById("home").style.display = "flex";
+}
+
+function toSurprise() {
+  document.getElementById("entry").style.display = "none";
+  document.getElementById("ranking").style.display = "none";
+  document.getElementById("recordPopUp").style.display = "none";
+  document.getElementById("home").style.display = "flex";
+  document.getElementById("surprise").style.display = "flex";
+
 }
 
 function record() {
@@ -117,14 +136,8 @@ function startGame() {
   document.getElementById("controller").style.zIndex = 20;
   myBackground = new component(canvasWidth, canvasHeight, "./images/game/background.png", 0, 0, "background");
   myGamePiece = new component(120, 150, "./images/game/tanudeer.png", 10, 120, "image");
-  myScore = new component("30px", "Kiwi Maru", "black", canvasWidth - 250, 60, "text");
-  // mySound = new sound("./audios/chuchu.mp3");
-  myMusic = new sound("./audios/JingleBells.mp3");
-
-  // document.body.addEventListener("click", function () {
-  //   myMusic.loop = true;
-  //   myMusic.play()
-  // })
+  myScore = new component("30px", "Kiwi Maru", "white", canvasWidth - 250, 60, "text");
+  mySound = new sound("./audios/chuchu.mp3");
   myGameArea.start();
 }
 
@@ -298,7 +311,7 @@ function updateGameArea() {
   // crash 
   for (i = 0; i < myObstacles.length; i++) {
     if (myGamePiece.crashWith(myObstacles[i])) {
-      // mySound.play();
+      mySound.play();
       myGameArea.stop();
       counting = false;
       gameStart = false;

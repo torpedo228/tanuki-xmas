@@ -37,7 +37,6 @@ div#entry {
 
   .entry_img {
     position: absolute;
-    width: 10vw;
   }
 
   img.entry_title {
@@ -81,6 +80,17 @@ div#entry {
     right: 3vw;
   }
 
+  img.bell {
+    width: 6vw;
+    top: 5vh;
+    right: 3vw;
+
+    &:hover {
+      cursor: pointer;
+      width: 7vw;
+      transition: 0.2s;
+    }
+  }
 
 
   div.button_wrap {
@@ -188,7 +198,7 @@ div#ranking {
     align-self: center;
     position: relative;
 
-    img.deco{
+    img.deco {
       width: 30vw;
       position: absolute;
       bottom: 0;
@@ -259,7 +269,7 @@ div#recordPopUp {
   border-radius: 5vw;
   color: white;
   position: absolute;
-  bottom: 2vh;
+  bottom: 10vh;
   right: 20vw;
   background-color: $xmasGreen;
 
@@ -284,6 +294,102 @@ div#recordPopUp {
   }
 }
 
+
+
+div#surprise {
+  z-index: 1;
+  display: none;
+  background-image: url('../images/surprise/background.png');
+  background-size: cover;
+
+  div.text_wrap {
+    position: relative;
+    right: 22vw;
+
+    h2 {
+      text-align: center;
+      margin: 0.5vw;
+      font-size: 4vw;
+      color: #FFC840;
+    }
+
+    div.paragraph {
+      box-sizing: border-box;
+      padding: 0 1vw;
+      background-color: $xmasBlue;
+      border-radius: 4vw;
+      width: 40vw;
+      height: 70vh;
+      overflow-y: scroll;
+
+      p {
+        font-size: 1.6vw;
+        color: white;
+      }
+    }
+  }
+
+  div.paragraph::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  div.wrap {
+    position: absolute;
+  }
+
+  div.tooto {
+    right: 31vw;
+    bottom: 4vh;
+
+    img.tooto {
+      width: 18vw;
+    }
+  }
+
+
+  div.mimi {
+    right: 1vw;
+    bottom: 20vh;
+
+    img.mimi {
+      width: 15vw;
+    }
+  }
+
+  div.tanuki {
+    bottom: 1vh;
+    right: 16vw;
+
+    img.tanuki {
+      width: 13vw;
+    }
+  }
+
+
+  img {
+    border-radius: 5vw;
+  }
+
+  img.title {
+    position: absolute;
+    width: 40vw;
+    right: 0;
+    top: -2vh;
+  }
+
+  img.character {
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.3);
+      transition: 0.2s;
+    }
+  }
+
+
+
+}
 
 /* chooseGameMode */
 div#chooseGameMode {

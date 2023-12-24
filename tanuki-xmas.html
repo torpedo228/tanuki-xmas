@@ -13,9 +13,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="tanuki-xmas.js"></script>
-  <script src="get-ranking-record.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+    integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/tanuki-xmas.js"></script>
+  <script src="./js/get-ranking-record.js"></script>
   <title>肥馴鹿之聖誕迷航記</title>
 </head>
 
@@ -23,14 +25,16 @@
 
   <!-- entry -->
   <div id="entry" class="full_page">
-    <img class="entry_title entry_img animate__animated animate__swing animate__slow animate__infinite"
-      src="./images/entry/title.svg" alt="">
+    <img class="entry_title entry_img animate__animated animate__zoomIn animate__slow" src="./images/entry/title.svg"
+      alt="">
     <h3 class="entry_slogan animate__animated animate__lightSpeedInRight">狸猫遊戲第一彈!</h3>
 
-    <a class="donate entry_img " href="https://www.buymeacoffee.com/tanuki.jr" target="_blank"><img
+    <a class="donate entry_img " href="https://www.buymeacoffee.com/tanuki.jr" title='聖誕快樂!唧~' target="_blank"><img
         class="tanuki_in_shoe animate__animated animate__jackInTheBox" src="./images/entry/tanuki-in-shoe.png" alt="">
     </a>
     <img class="snowman entry_img animate__animated animate__bounceInUp" src="./images/entry/snowman.svg" alt="">
+    <img class="bell entry_img animate__animated animate__swing animate__infinite" title="For TooTo"
+      src="./images/entry/secret-bell.png" alt="" onclick="toSurprise()">
 
 
 
@@ -42,7 +46,7 @@
         <h2 class="play">開始遊戲!</h2>
       </div>
       <div class="rank btn_block">
-        <button id="rank" onclick="goToRanking()">
+        <button id="rank" onclick="goToRanking()" onmouseenter="enterHover()">
           <i class="fa-solid fa-ranking-star"></i>
         </button>
         <h2 class="rank">排行榜</h2>
@@ -67,7 +71,7 @@
           <td id="rank"></td>
           <td id="name"></td>
           <td id="date"></td>
-          <td id="score"></td>
+          <td id="score_ranking"></td>
         </tr>
       </table>
     </div>
@@ -78,6 +82,33 @@
     <input type="text">
     <button class="submit" type="submit" onclick="submit()">登錄</button>
   </div>
+
+
+  <!-- surprise -->
+  <div id="surprise" class="full_page">
+    <div class="text_wrap">
+      <h2 class="animate__animated animate__bounceInDown">For TooTo :</h2>
+      <div class="paragraph animate__animated animate__flipInY">
+        <p>&emsp;&emsp;禿禿仔聖誕快樂！抱歉捏本次的狸貓小遊戲不知道又可以加多少狸貓點數惹↖(^ω^)↗
+          希望你不要被我的光速竄升狸貓專家之力給嚇著。這幾天沒有好好跟你相處因為都是在用這個啦～因為想到今年的聖誕節沒辦法像去年一樣豐盛豪華
+          也沒有自己的錢錢可以玩交換禮物 但是還是想對你表達我的情感～所以就做了這個～雖然寒酸了點而且蟲滿天，但希望你和狸貓都會喜歡～<br>
+          &emsp;&emsp;回國的這段時間裡，還是有著沒有你的戒斷反應，還有很多初出茅蘆的年輕人情緒，在找工作的這段期間，謝謝你一直在身邊鼓勵我、給我很多我自己沒想過的建議，有幾次的玻璃心也對你很抱歉沒有好好理解你的意思就心虛生氣╭(╯3╰)╮謝謝你總是體諒我聽我說話照顧我的心情，還有常常誇獎狸貓作品～每次你對狸貓網站做出喜歡可愛的反應我也都好開心好有成就感～今年也快結束了，這一年發生的轉變以及和你一起度過的每一天，我都全心全意的投入著，謝謝你一直守護著我，陪我一步步描繪現今的模樣，接下來的日子，希望我也能像你一樣強大能夠好好負責自己的人生，然後和你一起共築生活～老公～祝你聖誕快樂和新年快樂～我愛你❤️~
+        </p>
+      </div>
+    </div>
+    <img class="title animate__animated animate__fadeInTopRight  " src="./images/surprise/title.png" alt="">
+    <div title="暫時の狸貓陪睡人" class="wrap tooto animate__animated animate__slideInLeft">
+      <img class="character tooto " src="./images/surprise/tooto.png" alt="">
+    </div>
+    <div title="小雞狸貓飼養者(升格預備)" class="wrap mimi animate__animated animate__slideInDown">
+      <img class="character mimi " src="./images/surprise/mimi.png" alt="">
+    </div>
+    <div title="二!狸貓" class="wrap tanuki animate__animated animate__slideInUp">
+      <img class="character tanuki " src="./images/surprise/tanuki.png" alt="">
+    </div>
+
+  </div>
+
 
   <!-- choosePlayMode -->
   <div id="chooseGameMode" class="full_page">

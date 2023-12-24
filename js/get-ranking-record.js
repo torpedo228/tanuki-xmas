@@ -7,7 +7,6 @@ for (let i = 0; i < recordPool.length; i++) {
 async function getRankingRecord() {
   try {
     const response = await axios.post('./get_ranking-record.php')
-    dreamStarStore.dreamStarPool.splice(0);
     response.data.forEach(element => {
       const record = {
         name: element.name,
@@ -16,7 +15,7 @@ async function getRankingRecord() {
       }
       document.getElementById('name').innerHTML = record.name
       document.getElementById('date').innerHTML = record.date
-      document.getElementById('score').innerHTML = record.score
+      document.getElementById('score_ranking').innerHTML = record.score
       recordPool.push(record)
     });
 
