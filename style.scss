@@ -32,7 +32,7 @@ div.full_page {
 
 div#entry {
   z-index: 10;
-  background-image: url('../images/entry/background.png');
+  background-image: url('./images/entry/background.png');
   background-size: cover;
 
   .entry_img {
@@ -174,7 +174,7 @@ div#entry {
 
 div#ranking {
   z-index: 8;
-  background-image: url('../images/ranking/background.png');
+  background-image: url('./images/ranking/background.png');
   background-size: cover;
   display: none;
   flex-direction: column;
@@ -299,7 +299,7 @@ div#recordPopUp {
 div#surprise {
   z-index: 1;
   display: none;
-  background-image: url('../images/surprise/background.png');
+  background-image: url('./images/surprise/background.png');
   background-size: cover;
 
   div.text_wrap {
@@ -394,7 +394,7 @@ div#surprise {
 /* chooseGameMode */
 div#chooseGameMode {
   z-index: 9;
-  background-image: url('../images/choose-game-mode/background.png');
+  background-image: url('./images/choose-game-mode/background.png');
   background-size: cover;
   display: none;
   justify-content: center;
