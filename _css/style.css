@@ -25,7 +25,7 @@ div.full_page {
 
 div#entry {
   z-index: 10;
-  background-image: url("./images/entry/background.png");
+  background-image: url("tanuki-xmas/images/entry/background.png");
   background-size: cover;
 }
 div#entry .entry_img {
@@ -143,7 +143,7 @@ div#entry div.button_wrap h2.rank {
 
 div#ranking {
   z-index: 8;
-  background-image: url("./images/ranking/background.png");
+  background-image: url("tanuki-xmas/images/ranking/background.png");
   background-size: cover;
   display: none;
   flex-direction: column;
@@ -249,7 +249,7 @@ div#recordPopUp button.submit:hover {
 div#surprise {
   z-index: 1;
   display: none;
-  background-image: url("./images/surprise/background.png");
+  background-image: url("tanuki-xmas/images/surprise/background.png");
   background-size: cover;
 }
 div#surprise div.text_wrap {
@@ -320,7 +320,7 @@ div#surprise img.character:hover {
 /* chooseGameMode */
 div#chooseGameMode {
   z-index: 9;
-  background-image: url("./images/choose-game-mode/background.png");
+  background-image: url("tanuki-xmas/images/choose-game-mode/background.png");
   background-size: cover;
   display: none;
   justify-content: center;
